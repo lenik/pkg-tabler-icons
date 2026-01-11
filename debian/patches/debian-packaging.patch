@@ -1,0 +1,121 @@
+Index: tabler-icons/Makefile
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ tabler-icons/Makefile	2026-01-11 19:29:11.000000000 +0800
+@@ -0,0 +1,32 @@
++PREFIX ?= /usr
++DESTDIR ?=
++pkgdatadir ?= $(PREFIX)/share/tabler-icons
++
++all: svg png
++
++svg: icons
++	ln -snf $< $@
++
++svg/filled: svg
++svg/outline: svg
++
++png: png/filled png/outline
++
++png/filled: svg/filled
++	svg2assets -d -o $@ -s 16,20,24,32,48 svg/filled/*.svg
++
++png/outline: svg/outline
++	svg2assets -d -o $@ -s 16,20,24,32,48 svg/outline/*.svg
++
++install: all
++	install -d $(DESTDIR)$(pkgdatadir)/svg/filled
++	install -d $(DESTDIR)$(pkgdatadir)/svg/outline
++	install -d $(DESTDIR)$(pkgdatadir)/png/filled
++	install -d $(DESTDIR)$(pkgdatadir)/png/outline
++	install -m 644 icons/filled/*.svg $(DESTDIR)$(pkgdatadir)/svg/filled/
++	install -m 644 icons/outline/*.svg $(DESTDIR)$(pkgdatadir)/svg/outline/
++	cp -r png/filled $(DESTDIR)$(pkgdatadir)/png/
++	cp -r png/outline $(DESTDIR)$(pkgdatadir)/png/
++	install claude.md $(DESTDIR)$(pkgdatadir)
++
++.PHONY: all svg png install
+Index: tabler-icons/README-lenik.md
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ tabler-icons/README-lenik.md	2026-01-11 19:29:11.000000000 +0800
+@@ -0,0 +1,59 @@
++Lenik's Changes to Tabler Icons
++================================
++
++This document describes the changes made by Lenik (tabler-icons@bodz.net) in 2026
++to prepare Tabler Icons for Debian packaging.
++
++Changes Made
++------------
++
++### Makefile Enhancements
++
++1. **Added install target**: The Makefile now includes an `install` target that
++   installs SVG and PNG icon files to a configurable location.
++
++2. **PREFIX and DESTDIR support**: The install target respects standard
++   variables:
++   - `PREFIX`: Installation prefix (default: `/usr/local`)
++   - `DESTDIR`: Staging directory for packaging (default: empty)
++   - `pkgdatadir`: Data directory (default: `$(PREFIX)/share/tabler-icons`)
++
++   Usage examples:
++   ```bash
++   make install                          # Installs to /usr/local/share/tabler-icons
++   make install PREFIX=/usr              # Installs to /usr/share/tabler-icons
++   make install DESTDIR=/tmp/staging     # Stages to /tmp/staging/usr/local/share/tabler-icons
++   ```
++
++3. **Installation structure**: The install target creates the following structure:
++   ```
++   $(pkgdatadir)/
++   ├── svg/
++   │   ├── filled/      # Filled SVG icons
++   │   └── outline/      # Outline SVG icons
++   └── png/
++       ├── filled/      # Filled PNG icons (various sizes)
++       └── outline/     # Outline PNG icons (various sizes)
++   ```
++
++### Debian Packaging
++
++Added complete Debian packaging infrastructure:
++
++- **debian/control**: Package metadata and dependencies
++- **debian/changelog**: Package changelog
++- **debian/copyright**: Copyright and license information
++- **debian/rules**: Build rules that use the Makefile install target
++- **debian/source/format**: Source format specification (3.0 quilt)
++
++The Debian package installs icons to `/usr/share/tabler-icons/` as per Debian
++policy.
++
++Contact
++-------
++
++For questions or issues related to these changes:
++- Email: tabler-icons@bodz.net
++- Author: Lenik
++- Year: 2026
++
+Index: tabler-icons/claude.md
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ tabler-icons/claude.md	2026-01-11 19:29:11.000000000 +0800
+@@ -0,0 +1,15 @@
++# Claude AI Integration
++
++This file contains information about Claude AI integration with Tabler Icons.
++
++## Overview
++
++Tabler Icons provides a comprehensive set of icons that can be used with Claude AI for various purposes.
++
++## Usage
++
++Icons can be referenced and used in Claude AI conversations and applications.
++
++## Installation
++
++This file is installed as part of the tabler-icons Debian package to `/usr/share/tabler-icons/claude.md`.

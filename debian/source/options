@@ -1,0 +1,29 @@
+# Options for dpkg-source
+# Exclude build artifacts and large directories from source tarball
+tar-ignore = .git
+tar-ignore = node_modules
+tar-ignore = */node_modules
+tar-ignore = png
+tar-ignore = svg
+tar-ignore = .pc
+tar-ignore = *.debhelper*
+tar-ignore = *.substvars
+tar-ignore = files
+tar-ignore = tabler-icons/
+tar-ignore = libauto
+tar-ignore = *.build
+tar-ignore = *.buildinfo
+tar-ignore = debian/*.debhelper*
+tar-ignore = debian/*.substvars
+tar-ignore = debian/files
+tar-ignore = debian/tabler-icons/
+
+# Exclude unwanted files from source package
+extend-diff-ignore="\.git"
+extend-diff-ignore="node_modules"
+extend-diff-ignore="\.pnpm"
+extend-diff-ignore="pnpm-lock\.yaml"
+extend-diff-ignore="package-lock\.json"
+extend-diff-ignore="packages/icons-png"
+extend-diff-ignore="packages/icons-eps"
+extend-diff-ignore="packages/icons-svg"

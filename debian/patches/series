@@ -1,0 +1,3 @@
+# Debian packaging patches for tabler-icons
+# This file lists patches in the order they should be applied
+debian-packaging.patch
