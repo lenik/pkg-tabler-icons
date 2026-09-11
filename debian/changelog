@@ -1,0 +1,7 @@
+tabler-icons (3.36.1-1) unstable; urgency=medium
+
+  * Initial Debian package
+  * Install SVG and PNG icons to /usr/share/tabler-icons
+
+ -- Lenik (谢继雷) <lenik@bodz.net>  Wed, 08 Jan 2026 00:00:00 +0000
+

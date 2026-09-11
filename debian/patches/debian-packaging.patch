@@ -1,0 +1,63 @@
+Index: tabler-icons/Makefile
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ tabler-icons/Makefile	2026-01-11 19:29:11.000000000 +0800
+@@ -0,0 +1,36 @@
++PREFIX ?= /usr
++DESTDIR ?=
++pkgdatadir ?= $(PREFIX)/share/icons-tabler-icons
++
++all: svg data/png
++
++svg: orig/icons
++	ln -snf $< $@
++
++svg/filled: svg
++svg/outline: svg
++
++data/png: data/png/filled data/png/outline
++
++data/png/filled: svg/filled
++	svg2assets -d -o $@ -s 16,20,24,32,48 svg/filled/*.svg
++
++data/png/outline: svg/outline
++	svg2assets -d -o $@ -s 16,20,24,32,48 svg/outline/*.svg
++
++install: all
++	install -d $(DESTDIR)$(pkgdatadir)/svg/filled
++	install -d $(DESTDIR)$(pkgdatadir)/svg/outline
++	install -d $(DESTDIR)$(pkgdatadir)/png/filled
++	install -d $(DESTDIR)$(pkgdatadir)/png/outline
++	install -d $(DESTDIR)$(PREFIX)/bin
++	install -m 644 orig/icons/filled/*.svg $(DESTDIR)$(pkgdatadir)/svg/filled/
++	install -m 644 orig/icons/outline/*.svg $(DESTDIR)$(pkgdatadir)/svg/outline/
++	cp -r data/png/filled $(DESTDIR)$(pkgdatadir)/png/
++	cp -r data/png/outline $(DESTDIR)$(pkgdatadir)/png/
++	install -m 755 bin/icons-tabler-icons $(DESTDIR)$(PREFIX)/bin/
++	install claude.md $(DESTDIR)$(pkgdatadir)
++
++.PHONY: all svg data/png install
+Index: tabler-icons/README-lenik.md
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ tabler-icons/README-lenik.md	2026-01-11 19:29:11.000000000 +0800
+@@ -0,0 +1,40 @@
++Lenik's Changes to Tabler Icons
++================================
++
++Packaging layout:
++
++- \`orig/\` — upstream git clone (tabler/tabler-icons)
++- \`data/png/\` — generated PNG assets
++- \`bin/icons-tabler-icons\` — launcher for \`iconlib -l tabler-icons\`
++
++Contact: tabler-icons@bodz.net
+Index: tabler-icons/claude.md
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ tabler-icons/claude.md	2026-01-11 19:29:11.000000000 +0800
+@@ -0,0 +1,8 @@
++# Claude AI Integration
++
++Tabler Icons packaging for Debian. Icons install to \`/usr/share/icons-tabler-icons\`.
++Launcher: \`tabler-icons\` → \`iconlib -l tabler-icons\`.
