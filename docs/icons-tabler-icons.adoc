@@ -1,0 +1,34 @@
+= icons-tabler-icons(1)
+{project-author} <{project-email}>
+v{project-version}, {project-year}
+:doctype: manpage
+:manmanual: User Commands
+:mansource: icons-tabler-icons
+:man-linkstyle: blue R <>
+:nofooter:
+
+== Name
+
+icons-tabler-icons - Tabler Icons
+
+== Synopsis
+
+*icons-tabler-icons* [_OPTION_]...
+
+== Description
+
+Tabler Icons.
+
+== Options
+
+*-h, --help*::
+  Show a short usage summary and exit.
+
+== Author
+
+Written by {project-author} <{project-email}>.
+
+== Copyright
+
+Copyright (C) {project-year}.
+License AGPL-3.0-or-later.
