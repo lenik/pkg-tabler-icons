@@ -1,7 +1,7 @@
-tabler-icons (3.36.1-1) unstable; urgency=medium
+icons-tabler-icons (1.0.0) unstable; urgency=medium
 
-  * Initial Debian package
-  * Install SVG and PNG icons to /usr/share/tabler-icons
+  * Packaging as icons-tabler-icons with iconlibutils launcher.
+  * Install prebuilt index/ web preview and FAISS faiss.* beside icons.
+  * library.iconlib: icons_root + faiss_index for natural-language search.
 
- -- Lenik (谢继雷) <lenik@bodz.net>  Wed, 08 Jan 2026 00:00:00 +0000
-
+ -- Lenik (谢继雷) <lenik@bodz.net>  Sat, 12 Sep 2026 04:20:24 +0800

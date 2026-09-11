@@ -1,2 +1,2 @@
 #!/bin/sh
-exec iconlibutils -l tabler-icons "$@"
+exec iconlib -l tabler-icons "$@"
