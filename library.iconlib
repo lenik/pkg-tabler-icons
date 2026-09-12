@@ -8,4 +8,5 @@ homepage=https://tabler.io/icons
 description=Tabler Icons
 package=icons-tabler-icons
 icons_root=orig/icons
-faiss_index=/usr/share/icons-tabler-icons
+faiss_index=faiss.1,faiss.2,faiss.3
+faiss_shard_size=10M
